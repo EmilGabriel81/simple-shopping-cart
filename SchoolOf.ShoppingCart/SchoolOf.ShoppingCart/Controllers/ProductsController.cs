@@ -41,22 +41,19 @@ namespace SchoolOf.ShoppingCart.Controllers
 			myList.Add(new ProductDto
 			{
 				Category = "Vehicle",
-				Description = "test description",
+				Description = "Testing vehicle",
 				Id = 15,
-				Image = "no Image yet",
+				Image = "No Image Available",
 				Name = "Dacia",
-				Price = 50m
+				Price = 500m
 
 			});// This is harcoded but we can use a repository to retrieve the method with an Id as an argument
 
 			try
 			{
 				ProductDto result =  myList.Find(x => x.Id == id);
-
 				if (result == null) return NotFound();
-
 				return Ok(result);
-
 			}
 			catch(Exception )
 			{ 
