@@ -7,9 +7,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchoolOf.ShoppingCart", "Sc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchoolOf.Data.Abstraction", "SchoolOf.Data.Abstraction\SchoolOf.Data.Abstraction.csproj", "{7DB74F6A-9692-476C-B2A5-E40FC5470928}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolOf.Data.Models", "SchoolOf.Data.Models\SchoolOf.Data.Models.csproj", "{16377D7B-3CB1-41CB-B67F-D5567568748C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchoolOf.Data.Models", "SchoolOf.Data.Models\SchoolOf.Data.Models.csproj", "{16377D7B-3CB1-41CB-B67F-D5567568748C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolOf.Dtos", "SchoolOf.Dtos\SchoolOf.Dtos.csproj", "{AE188255-2B47-4A17-8292-3C6DD908F98A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchoolOf.Dtos", "SchoolOf.Dtos\SchoolOf.Dtos.csproj", "{AE188255-2B47-4A17-8292-3C6DD908F98A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchoolOf.Data", "SchoolOf.Data\SchoolOf.Data.csproj", "{119AA533-A00D-407D-9E75-C58FB4789F90}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolOf.Common", "SchoolOf.Common\SchoolOf.Common.csproj", "{F7EF698F-E675-4C48-9A2E-CF1325025910}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +37,14 @@ Global
 		{AE188255-2B47-4A17-8292-3C6DD908F98A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE188255-2B47-4A17-8292-3C6DD908F98A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE188255-2B47-4A17-8292-3C6DD908F98A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{119AA533-A00D-407D-9E75-C58FB4789F90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{119AA533-A00D-407D-9E75-C58FB4789F90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{119AA533-A00D-407D-9E75-C58FB4789F90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{119AA533-A00D-407D-9E75-C58FB4789F90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7EF698F-E675-4C48-9A2E-CF1325025910}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7EF698F-E675-4C48-9A2E-CF1325025910}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7EF698F-E675-4C48-9A2E-CF1325025910}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7EF698F-E675-4C48-9A2E-CF1325025910}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

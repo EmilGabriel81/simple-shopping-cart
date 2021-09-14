@@ -4,7 +4,7 @@ using SchoolOf.Data.Abstraction;
 
 namespace SchoolOf.Data.Models
 {
-    class Product : BaseEntityModel
+    public class Product : BaseEntityModel
     {
         public string Name { get; set; }
         public string Description { get; set; }

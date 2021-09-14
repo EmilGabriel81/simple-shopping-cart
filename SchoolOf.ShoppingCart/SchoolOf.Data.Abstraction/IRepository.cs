@@ -6,10 +6,10 @@ namespace SchoolOf.Data.Abstraction
 {
     public interface IRepository<T> where T : BaseEntityModel
     {
-        T GetById(long id);
+        Task<T> GetByIdAsync(long id);
         T Add(T entity);
         Task<bool> DeleteByIdAsync(long id);
-        Task<T> UpdateAsync(T entity);
+        T Update(T entity);
         IEnumerable<T> Find(Func<T, bool> searchCriteria);
 
     }
