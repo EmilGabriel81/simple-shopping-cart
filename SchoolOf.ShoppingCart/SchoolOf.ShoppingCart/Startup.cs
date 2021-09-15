@@ -7,7 +7,8 @@ using Microsoft.OpenApi.Models;
 using SchoolOf.Common;
 using SchoolOf.Data;
 using SchoolOf.Data.Abstraction;
-
+using SchoolOf.Mappers;
+using SchoolOf.ShoppingCart.Filters;
 
 namespace SchoolOf.ShoppingCart
 {
@@ -23,16 +24,26 @@ namespace SchoolOf.ShoppingCart
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
-            services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "SchoolOf.ShoppingCart", Version = "v1" });
             });
             // database container registration
             services.AddScoped<DatabaseContext>();
+
             // unit of work
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            // Global Filter Exception
+            services.AddScoped<GlobalExceptionFilter>();
+
+            // AutoMapper
+            services.AddAutoMapper(typeof(ProductsMapperProfile).Assembly);
+
+            services.AddControllers(opt => {
+                opt.Filters.AddService<GlobalExceptionFilter>();
+            });
+
             // configuration (options)
             services.Configure<DbSettings>(Configuration.GetSection(nameof(DbSettings)));
         }

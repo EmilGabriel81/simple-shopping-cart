@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using SchoolOf.Dtos;
 using SchoolOf.Data.Abstraction;
 using SchoolOf.Data.Models;
+using AutoMapper;
 
 namespace SchoolOf.ShoppingCart.Controllers
 {
@@ -14,10 +15,12 @@ namespace SchoolOf.ShoppingCart.Controllers
 	public class ProductsController : ControllerBase
 	{
 		private readonly IUnitOfWork _unitOfWork;
+		private readonly IMapper _mapper;
 
-		public ProductsController(IUnitOfWork unitOfWork)
+		public ProductsController(IUnitOfWork unitOfWork, IMapper mapper)
 		{
 			this._unitOfWork = unitOfWork;
+			_mapper = mapper;
 		}
 
 
@@ -25,6 +28,7 @@ namespace SchoolOf.ShoppingCart.Controllers
 		[ProducesResponseType(typeof(IEnumerable<ProductDto>), 200)]
 		public async Task<IActionResult>GetProducts()
         {
+			throw new System.Exception();
 			var myListOfProducts = new List<ProductDto>();
 			var productsFromDb = this._unitOfWork.GetRepository<Product>().Find(product => !product.IsDeleted);
 			foreach (var p in productsFromDb)
@@ -43,12 +47,48 @@ namespace SchoolOf.ShoppingCart.Controllers
 			return Ok(myListOfProducts);
 		}
 
+		//-----------------------------------------------------------------------------------
 
 		//Implementati o functionalitate de paginare pe GET Products –
 		//asta presupune ca metoda din controller sa primeasca 2 parametri:
 		//pageNumber, pageSize si in functie de valoarea lor
 
+		[HttpGet]
+		[Route("{pageNumber}/{pageSize}")]
+		[ProducesResponseType(typeof(IEnumerable<ProductDto>), 200)]
+		public async Task<IActionResult> GetPaginatedProducts(int pageNumber = 1, int pageSize = 10)
+		{
+			if (pageNumber < 1)// we have to substract 1
+			{
+				throw new ArgumentException("Invalid page number.");
+			}
+			if (pageSize < 1)
+			{
+				throw new ArgumentException("Invalid number of items.");
+			}
+			var productsFromDb = this._unitOfWork.GetRepository<Product>().Find(product => !product.IsDeleted, (pageNumber - 1) * pageSize, pageSize);
 
+			var myListOfProducts = _mapper.Map<List<ProductDto>>(productsFromDb);
+
+			
+
+			return Ok(myListOfProducts);
+		}
+
+		//-----------------------------------------------------------------------------------
+
+		/*
+		[HttpGet]
+		[ProducesResponseType(typeof(IEnumerable<OrderDto>), 200)]
+		public async Task<IActionResult> GetOrders()
+		{
+			throw new System.Exception();
+			var productsFromDb = this._unitOfWork.GetRepository<Order>().Find(product => !product.IsDeleted);
+            var myListOfOrders = _mapper.Map<List<OrderDto>>(productsFromDb);
+
+			return Ok(myListOfOrders);
+		}
+		*/
 		//-----------------------------------------------------------------------------------
 
 		private List<ProductDto> myList = new List<ProductDto>();

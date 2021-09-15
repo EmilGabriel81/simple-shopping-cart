@@ -10,6 +10,10 @@ namespace SchoolOf.Data.Models
 {
    public class Cart : BaseEntityModel
     {
-        public Status Status { get; set; }
+        public CartStatus Status { get; set; }
+        // Adaugati in Cart o proprietate =>
+        // Products care este de tip lista de Product + migrare + update baza de date
+        public List<Product> Products { get; set; }
+
     }
 }

@@ -37,6 +37,13 @@ namespace SchoolOf.Data
             return this._dbSet.Where(searchCriteria).ToList();
         }
 
+        public IEnumerable<T> Find(Func<T, bool> searchCriteria, int skip, int take)
+        {
+            
+            return this._dbSet.Where(searchCriteria).Skip(skip).Take(take).ToList();
+        }
+
+
         public async Task<T> GetByIdAsync(long id)
         {
             return await this._dbSet.FindAsync(id);
@@ -47,6 +54,5 @@ namespace SchoolOf.Data
             entity.ModifiedAt = DateTimeOffset.UtcNow;
             return this._dbSet.Update(entity).Entity;
         }
-
     }
 }

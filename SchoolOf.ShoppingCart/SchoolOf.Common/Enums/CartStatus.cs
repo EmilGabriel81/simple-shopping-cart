@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace SchoolOf.Common.Enums
 {
-    public enum Status
+    public enum CartStatus
     {
-        Created,
-        Completed
+        Created = 1,
+        Completed = 2
     }
 }

@@ -11,6 +11,8 @@ namespace SchoolOf.Data
     {
         private readonly DbSettings _dbSettings;
         public DbSet<Product> Products { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<Cart> Carts { get; set; }
 
         public DatabaseContext(IOptions<DbSettings> optionSettings)
         {
@@ -33,12 +35,12 @@ namespace SchoolOf.Data
             modelBuilder.Entity<Product>().Property(x => x.Category).IsRequired().HasMaxLength(100);
           
             modelBuilder.Entity<Product>().HasData(ProductInitialData.GetData());
-            onOrderCreating(modelBuilder);
-            onCartCreating(modelBuilder);
+            OnOrderCreating(modelBuilder);
+            OnCartCreating(modelBuilder);
         }
 
        
-        private void onOrderCreating(ModelBuilder modelBuilder)
+        private void OnOrderCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Order>().Property(x => x.Name).IsRequired().HasMaxLength(100);
             modelBuilder.Entity<Order>().Property(x => x.Address).IsRequired().HasMaxLength(500);
@@ -46,13 +48,9 @@ namespace SchoolOf.Data
             modelBuilder.Entity<Order>().Property(x => x.PhoneNo).IsRequired().HasMaxLength(10); 
             modelBuilder.Entity<Order>().Property(x => x.Total).IsRequired();
         }
-        private void onCartCreating(ModelBuilder modelBuilder)
+        private void OnCartCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Cart>().Property(x => x.Status).IsRequired();
         }
-
-        // we can also do it by exposing one or more DbSet of the required model
-        // public DbSet<Order> Orders { get; set; } 
-
     }
 }

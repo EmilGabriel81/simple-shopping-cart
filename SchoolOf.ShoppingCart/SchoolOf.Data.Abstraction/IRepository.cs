@@ -11,6 +11,7 @@ namespace SchoolOf.Data.Abstraction
         Task<bool> DeleteByIdAsync(long id);
         T Update(T entity);
         IEnumerable<T> Find(Func<T, bool> searchCriteria);
+        IEnumerable<T> Find(Func<T, bool> searchCriteria, int skip, int take);
 
     }
 }
