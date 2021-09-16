@@ -7,6 +7,7 @@ using SchoolOf.Dtos;
 using SchoolOf.Data.Abstraction;
 using SchoolOf.Data.Models;
 using AutoMapper;
+using SchoolOf.Common.Exceptions;
 
 namespace SchoolOf.ShoppingCart.Controllers
 {
@@ -60,35 +61,34 @@ namespace SchoolOf.ShoppingCart.Controllers
 		{
 			if (pageNumber < 1)// we have to substract 1
 			{
-				throw new ArgumentException("Invalid page number.");
+				throw new InvalidParameterException("Invalid page number.");
 			}
 			if (pageSize < 1)
 			{
-				throw new ArgumentException("Invalid number of items.");
+				throw new InvalidParameterException("Invalid number of items.");
 			}
 			var productsFromDb = this._unitOfWork.GetRepository<Product>().Find(product => !product.IsDeleted, (pageNumber - 1) * pageSize, pageSize);
 
 			var myListOfProducts = _mapper.Map<List<ProductDto>>(productsFromDb);
-
-			
 
 			return Ok(myListOfProducts);
 		}
 
 		//-----------------------------------------------------------------------------------
 
-		/*
+		
 		[HttpGet]
+		[ApiExplorerSettings(IgnoreApi = true)]
 		[ProducesResponseType(typeof(IEnumerable<OrderDto>), 200)]
 		public async Task<IActionResult> GetOrders()
 		{
 			throw new System.Exception();
-			var productsFromDb = this._unitOfWork.GetRepository<Order>().Find(product => !product.IsDeleted);
+			var productsFromDb = this._unitOfWork.GetRepository<Order>().Find(order => !order.IsDeleted);
             var myListOfOrders = _mapper.Map<List<OrderDto>>(productsFromDb);
 
 			return Ok(myListOfOrders);
 		}
-		*/
+	
 		//-----------------------------------------------------------------------------------
 
 		private List<ProductDto> myList = new List<ProductDto>();

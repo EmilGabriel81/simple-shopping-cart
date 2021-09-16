@@ -1,6 +1,7 @@
 ﻿
 
 using SchoolOf.Data.Abstraction;
+using System.Collections.Generic;
 
 namespace SchoolOf.Data.Models
 {
@@ -11,5 +12,6 @@ namespace SchoolOf.Data.Models
         public decimal Price { get; set; }
         public string Category { get; set; }
         public string Image { get; set; }
+        public ICollection<Cart> Carts { get; set; }// many carts have many products
     }
 }

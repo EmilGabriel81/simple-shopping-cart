@@ -8,9 +8,7 @@ namespace SchoolOf.Mappers
     {
         public ProductsMapperProfile()
         {
-            // (Source) -> (DestinationToBeMapped)
             CreateMap(typeof(Product), typeof(ProductDto));
-            CreateMap(typeof(Order), typeof(OrderDto));
         }
     }
 }

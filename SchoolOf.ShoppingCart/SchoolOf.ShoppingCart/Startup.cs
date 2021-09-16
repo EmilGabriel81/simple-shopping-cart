@@ -39,6 +39,8 @@ namespace SchoolOf.ShoppingCart
 
             // AutoMapper
             services.AddAutoMapper(typeof(ProductsMapperProfile).Assembly);
+            // Orders AutoMapper
+            services.AddAutoMapper(typeof(OrdersMapperProfile).Assembly);
 
             services.AddControllers(opt => {
                 opt.Filters.AddService<GlobalExceptionFilter>();

@@ -13,7 +13,7 @@ namespace SchoolOf.Data.Models
         public CartStatus Status { get; set; }
         // Adaugati in Cart o proprietate =>
         // Products care este de tip lista de Product + migrare + update baza de date
-        public List<Product> Products { get; set; }
+        public ICollection<Product> Products { get; set; }// many products can be found in many carts
 
     }
 }
