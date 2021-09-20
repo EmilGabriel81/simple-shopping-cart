@@ -3,6 +3,7 @@ using SchoolOf.Data.Abstraction;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -35,6 +36,17 @@ namespace SchoolOf.Data
         public IEnumerable<T> Find(Func<T, bool> searchCriteria)
         {
             return this._dbSet.Where(searchCriteria).ToList();
+        }
+
+
+        public IEnumerable<T> Find(Expression<Func<T, bool>> searchCriteria, string includePropertyByName)
+        {
+            var result = this._dbSet.Where(searchCriteria);
+            if (!string.IsNullOrEmpty(includePropertyByName))
+            {
+                result = result.Include(includePropertyByName);
+            }
+            return result.ToList();
         }
 
         public IEnumerable<T> Find(Func<T, bool> searchCriteria, int skip, int take)

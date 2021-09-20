@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="10.3.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SchoolOf.Common\SchoolOf.Common.csproj" />
+    <ProjectReference Include="..\SchoolOf.Data.Abstraction\SchoolOf.Data.Abstraction.csproj" />
+    <ProjectReference Include="..\SchoolOf.Data.Models\SchoolOf.Data.Models.csproj" />
+    <ProjectReference Include="..\SchoolOf.Dtos\SchoolOf.Dtos.csproj" />
+  </ItemGroup>
+
+</Project>

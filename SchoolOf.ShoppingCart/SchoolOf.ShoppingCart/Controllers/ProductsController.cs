@@ -29,7 +29,6 @@ namespace SchoolOf.ShoppingCart.Controllers
 		[ProducesResponseType(typeof(IEnumerable<ProductDto>), 200)]
 		public async Task<IActionResult>GetProducts()
         {
-			throw new System.Exception();
 			var myListOfProducts = new List<ProductDto>();
 			var productsFromDb = this._unitOfWork.GetRepository<Product>().Find(product => !product.IsDeleted);
 			foreach (var p in productsFromDb)
@@ -76,7 +75,7 @@ namespace SchoolOf.ShoppingCart.Controllers
 
 		//-----------------------------------------------------------------------------------
 
-		
+		/*
 		[HttpGet]
 		[ApiExplorerSettings(IgnoreApi = true)]
 		[ProducesResponseType(typeof(IEnumerable<OrderDto>), 200)]
@@ -88,7 +87,8 @@ namespace SchoolOf.ShoppingCart.Controllers
 
 			return Ok(myListOfOrders);
 		}
-	
+	    */
+
 		//-----------------------------------------------------------------------------------
 
 		private List<ProductDto> myList = new List<ProductDto>();

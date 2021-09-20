@@ -24,6 +24,7 @@ namespace SchoolOf.ShoppingCart.Filters
             _logger.LogError(context.Exception, guid);
             context.ExceptionHandled = true;
 
+
             if (context.Exception is InvalidParameterException)
             {
                 var ex = (InvalidParameterException)context.Exception;
@@ -37,11 +38,23 @@ namespace SchoolOf.ShoppingCart.Filters
                 };
                 context.ExceptionHandled = true;
             }
+            else if (context.Exception is InternalValidationException internalValidationException)
+            {
+                var response = new ErrorDto
+                {
+                    Errors = internalValidationException.Errors
+                };
+
+                context.Result = new JsonResult(response)
+                {
+                    StatusCode = 400
+                };
+            }
             else
             {    
                 var response = new ErrorDto
                 {
-                    Errors = new List<String> { "Something went wrong" }
+                    Errors = new List<String> { "Something went wrong. Please contact the support team. Id: " +  guid }
                 };
 
                 context.Result = new JsonResult(response)

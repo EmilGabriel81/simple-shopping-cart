@@ -10,7 +10,7 @@ namespace SchoolOf.Mappers
         public OrdersMapperProfile()
         {
             // (Source) -> (DestinationToBeMapped)
-            CreateMap(typeof(Order), typeof(OrderDto));
+            CreateMap<Order, OrderDto>();
         }
     }
 }

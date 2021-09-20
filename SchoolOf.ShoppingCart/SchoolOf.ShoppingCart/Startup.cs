@@ -1,3 +1,4 @@
+using FluentValidation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -9,6 +10,7 @@ using SchoolOf.Data;
 using SchoolOf.Data.Abstraction;
 using SchoolOf.Mappers;
 using SchoolOf.ShoppingCart.Filters;
+using SchoolOf.Validators;
 
 namespace SchoolOf.ShoppingCart
 {
@@ -24,6 +26,16 @@ namespace SchoolOf.ShoppingCart
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(corsOptions =>
+            {
+                corsOptions.AddPolicy("defaultPoly", corsPolicyBuilder =>
+                {
+                    corsPolicyBuilder.AllowAnyMethod();
+                    corsPolicyBuilder.AllowAnyOrigin();
+                    corsPolicyBuilder.AllowAnyHeader();
+
+                });
+            });
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "SchoolOf.ShoppingCart", Version = "v1" });
@@ -39,8 +51,8 @@ namespace SchoolOf.ShoppingCart
 
             // AutoMapper
             services.AddAutoMapper(typeof(ProductsMapperProfile).Assembly);
-            // Orders AutoMapper
-            services.AddAutoMapper(typeof(OrdersMapperProfile).Assembly);
+
+            services.AddValidatorsFromAssembly(typeof(CartProductValidator).Assembly);
 
             services.AddControllers(opt => {
                 opt.Filters.AddService<GlobalExceptionFilter>();
@@ -59,6 +71,8 @@ namespace SchoolOf.ShoppingCart
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "SchoolOf.ShoppingCart v1"));
             }
+
+            app.UseCors("defaultPoly");
 
             app.UseHttpsRedirection();
 

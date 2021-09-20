@@ -15,7 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchoolOf.Data", "SchoolOf.D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchoolOf.Common", "SchoolOf.Common\SchoolOf.Common.csproj", "{F7EF698F-E675-4C48-9A2E-CF1325025910}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolOf.Mappers", "SchoolOf.Mappers\SchoolOf.Mappers.csproj", "{2BD91135-BC2E-4555-B454-CEF5FCAB590A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchoolOf.Mappers", "SchoolOf.Mappers\SchoolOf.Mappers.csproj", "{2BD91135-BC2E-4555-B454-CEF5FCAB590A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolOf.Validators", "SchoolOf.Validators\SchoolOf.Validators.csproj", "{DFA579B6-ACA3-48F9-B285-000C9F37C2B8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{2BD91135-BC2E-4555-B454-CEF5FCAB590A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2BD91135-BC2E-4555-B454-CEF5FCAB590A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2BD91135-BC2E-4555-B454-CEF5FCAB590A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFA579B6-ACA3-48F9-B285-000C9F37C2B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFA579B6-ACA3-48F9-B285-000C9F37C2B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFA579B6-ACA3-48F9-B285-000C9F37C2B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFA579B6-ACA3-48F9-B285-000C9F37C2B8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

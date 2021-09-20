@@ -37,7 +37,7 @@ namespace SchoolOf.Data
             modelBuilder.Entity<Product>().HasData(ProductInitialData.GetData());
             OnOrderCreating(modelBuilder);
             OnCartCreating(modelBuilder);
-            OnCartJoiningProduct(modelBuilder);
+           // OnCartJoiningProduct(modelBuilder);
         }
 
        
@@ -53,7 +53,7 @@ namespace SchoolOf.Data
         {
             modelBuilder.Entity<Cart>().Property(x => x.Status).IsRequired();
         }
-
+        // Extra
         private void OnCartJoiningProduct(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Product>().HasMany(p => p.Carts)

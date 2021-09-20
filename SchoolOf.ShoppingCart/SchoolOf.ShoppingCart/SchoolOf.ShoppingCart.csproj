@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="10.3.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.9">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -20,6 +21,7 @@
     <ProjectReference Include="..\SchoolOf.Data\SchoolOf.Data.csproj" />
     <ProjectReference Include="..\SchoolOf.Dtos\SchoolOf.Dtos.csproj" />
     <ProjectReference Include="..\SchoolOf.Mappers\SchoolOf.Mappers.csproj" />
+    <ProjectReference Include="..\SchoolOf.Validators\SchoolOf.Validators.csproj" />
   </ItemGroup>
 	
 
