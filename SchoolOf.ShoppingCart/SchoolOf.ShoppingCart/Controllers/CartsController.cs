@@ -73,7 +73,7 @@ namespace SchoolOf.ShoppingCart.Controllers
             Cart cart = null;
             cart = cartRepo.Find(x => x.Id == id, nameof(Cart.Products)).FirstOrDefault();
 
-            if (cart == null || cart.IsDeleted || cart.Status != Common.Enums.CartStatus.Created)
+            if (cart == null || cart.IsDeleted)
             {
                 throw new InvalidParameterException("Not a valid id");
             }       
@@ -112,12 +112,16 @@ namespace SchoolOf.ShoppingCart.Controllers
             return Ok(_mapper.Map<CartDto>(cart));
         }
 
-        /*Endpoint nou ‘/orders’ – trebuie sa adauge un order pentru un anumit cart
+        /*
+         *  work in progress
+         * 
+         * Endpoint nou ‘/orders’ – trebuie sa adauge un order pentru un anumit cart
           Cartul trebuie sa treaca in statusul Completed
           Orderul creat trebuie returnat
-          tip: Nu cred ca este nevoie sa adaugi in Cart, ci in Order.
+         
         */
 
+        /*
         [HttpPost]
         [ProducesResponseType(typeof(CartOrderDto), 200)]
         public async Task<IActionResult> AddOrders([FromBody] CartOrderDto cartOrder)
@@ -137,9 +141,11 @@ namespace SchoolOf.ShoppingCart.Controllers
                 cart.Status = Common.Enums.CartStatus.Completed;
                 order.CartId = cart.Id;
             }
+
+            await _unitOfWork.SaveChangesAsync();
             return Ok(_mapper.Map<OrderDto>(order));
         }
-
+        */
         //-------------------------------------------------------------------------------------------------------
 
     }
